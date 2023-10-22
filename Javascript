@@ -1,0 +1,54 @@
+/******  A. Take a sentence as an input and reverse every word in that sentence. ****/
+function reverseWords(sentence) {
+    let revSentence = '';
+    let wordStart = 0;
+    for (let i = 0; i <= sentence.length; i++) {
+        if (i === sentence.length || sentence[i] === ' ') {
+            let word = '';
+            for (let j = i - 1; j >= wordStart; j--) {
+                word += sentence[j];
+            }
+            revSentence += word;
+            if (i < sentence.length) {
+                revSentence += ' ';
+            }
+            wordStart = i + 1;
+        }
+    }
+    return revSentence;
+}
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+rl.question('Enter a sentence: ', (inSentence) => {
+    const revSentence = reverseWords(inSentence);
+    console.log('Reversed sentence: ' + revSentence);
+    rl.close();
+});
+
+/*** B. Perform sorting of an array in descending order. ****/
+function descSort(arr) {
+    var n = arr.length;
+    for (var i = 0; i < n - 1; i++) {
+        for (var j = 0; j < n - i - 1; j++) {
+            if (arr[j] < arr[j + 1]) {
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+var array = [3,5,9,1,7,2];
+descSort(array);
+for (var i = 0; i < array.length; i++) {
+    console.log(array[i] + " ");
+}
+
+
+
+
+
